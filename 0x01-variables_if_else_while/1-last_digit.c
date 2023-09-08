@@ -5,7 +5,7 @@
 /**
  * main - entry point
  *
- * Description:c program to assign a random number to the variable n
+ * Description: Ac program to assign a random number to the variable n
  *
  * Return: always return 0 (success)
 */
