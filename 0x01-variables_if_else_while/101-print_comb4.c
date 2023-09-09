@@ -12,9 +12,9 @@ int main(void)
 
 	for (n = 48 ; n < 58 ; n++)
 	{
-		for (m = 49 ; m <= 58 ; m++)
+		for (m = 49 ; m < 58 ; m++)
 		{
-			for (l = 50 ; l <= 58 ; l++)
+			for (l = 50 ; l < 58 ; l++)
 			{
 				if (l > m && m > n)
 				{
