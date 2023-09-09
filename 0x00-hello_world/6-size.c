@@ -1,14 +1,12 @@
 #include <stdio.h>
 
 /**
- * main - entry point
+ * main - A c program that types sizes of various types.
  *
- * Description: A c program that types sizes of various types.
- *
- * Return: always 0 (success)
+ * Return: always return  0 (success)
 */
 
-int mian(viod)
+int main(void)
 {
 
 	printf("Size of a char: %d byte(s)\n", sizeof(char));
