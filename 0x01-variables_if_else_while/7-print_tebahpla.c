@@ -3,9 +3,9 @@
 /*
  * main - entry point
  *
- * Description: program that prints the lowercase alphabet in reverse
+ * Description: a c proram to print alpabet reversably
  *
- * Return: Always return 0 (success)
+ * Return: Always 0 (success)
 */
 
 int main(void)
