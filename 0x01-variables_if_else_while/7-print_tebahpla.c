@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-/*
- * main - entry point
- *
- * Description: a c proram to print alpabet reversably
+/**
+ * main - a c proram to print alpabet reversably
  *
  * Return: Always 0 (success)
 */
