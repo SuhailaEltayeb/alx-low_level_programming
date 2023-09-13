@@ -7,26 +7,23 @@
 
 int main(void)
 {
-	int count;
+	long int i, j, k, next;
 
-	unsigned long fib1 = 0, fib2 = 1, sum;
+	j = 1;
+	k = 2;
 
-	for (count = 0 ; count < 50 ; count++)
+	for (i = 1 ; i <= 50 ; i++)
 	{
-		sum = fib1 + fib2;
-		printf("%lu", sum);
-
-		fib1 = fib2;
-		fib2 = sum;
-
-		if (count == 49)
+		if (j != 20365011074)
 		{
-			printf("\n");
+			printf("%ld\n, ", j);
+		} else
+		{
+			printf("%ld\n", j);
 		}
-			else
-			{
-				printf(", ");
-		}
-			return (0);
+		next = j + k;
+		j = k;
+		k = next;
 	}
+	return (0);
 }
