@@ -8,7 +8,9 @@
 int main(void)
 {
 	int i;
+
 	unsigned long int j, k, next, sum;
+
 	k = 1;
 	k = 2;
 	sum = 0;
@@ -23,7 +25,7 @@ int main(void)
 		j = k;
 		k = next;
 	}
-	printf("%lu\n" , sum);
+	printf("%lu\n", sum);
 
 	return (0);
 }
