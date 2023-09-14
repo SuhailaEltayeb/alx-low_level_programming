@@ -1,16 +1,12 @@
 #include "main.h"
 
 /**
- * _isdigit: ceck if nums between 0 and 9
+ * _isdigit - ceck if nums between 0 and 9
  * @c: intiger to be checked
- *
- * Return: 0 or 1
+ * Return: 1 if c is digit, 0 otherwise
 */
 
 int _isdigit(int c)
 {
-	if (c >= 0  && c <= 9)
-		return (1);
-	else
-		return (0);
+	return  (c >= '0'  && c <= '9');
 }
