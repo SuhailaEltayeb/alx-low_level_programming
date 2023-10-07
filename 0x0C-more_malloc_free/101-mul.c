@@ -1,5 +1,5 @@
 #include "main.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 #define ERR_MSG "Error"
@@ -25,7 +25,7 @@ int is_digit(char *s)
 /**
  * _strlen - returns the length of string
  * @s: string to be tested
- * Return: legth of string
+ * Return: length of string
 */
 
 int _strlen(char *s)
@@ -43,7 +43,7 @@ int _strlen(char *s)
  * Return: void
 */
 
-void errors()
+void errors(void)
 {
 	printf("Error\n");
 	exit(98);
@@ -57,45 +57,43 @@ void errors()
 int main(int argc, char *argv[])
 {
 	char *s1, *s2;
-	int len1, len2, i, carry, digit1, digit2, *result, a = 0;
+	int length1, length2, length, i, carry, digit1, digit2, *result, a = 0;
 
 	s1 = argv[1], s2 = argv[2];
-	if (argc != 3 || !is_digit(s1) || !si_digit(s2))
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
 		errors();
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	len = len1 + len2 + 1;
-	result = malloc(sizeof(int) * len);
+	length1 = _strlen(s1);
+	length2 = _strlen(s2);
+	length = length1 + length2 + 1;
+	result = malloc(sizeof(int) * length);
 	if (!result)
 		return (1);
-	for (i = 0; i <= len1 + len2; i++)
+	for (i = 0; i <= length1 + length2; i++)
 		result[i] = 0;
-	for (len1 = len1 - 1; len1 >= 0; len1--)
+	for (length1 = length1 - 1; length1 >= 0; length1--)
 	{
-		digit1 = s1[len] - '0';
+		digit1 = s1[length1] - '0';
 		carry = 0;
-		for (len2 = len2 - 1; len2 >= 0; len2--)
-			digit2 = s2[len2] - '0';
-		carry += result[len1 + len2 + 1] + (digit1 + digit2);
-		result[len1 + len2 +1] = carry % 10;
-		carry /= 10;
+		for (length2 = _strlen(s2) - 1; length2 >= 0; length2--)
+		{
+			digit2 = s2[length2] - '0';
+			carry += result[length1 + length2 + 1] + (digit1 * digit2);
+			result[length1 + length2 + 1] = carry % 10;
+			carry /= 10;
+		}
+		if (carry > 0)
+			result[length1 + length2 + 1] += carry;
 	}
-	if (carry > 0)
-		result[len1 + len2 + 1] += carry;
-}
-for (i = 0; i < len - 1; i++)
-{
-	if (result[i])
-		a = 1;
-	if (a)
-		_putchar(result[i] + '0');
-}
-if (!a)
-	_putchar('0');
+	for (i = 0; i < length - 1; i++)
+	{
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
+	}
+	if (!a)
+		_putchar('0');
 	_putchar('\n');
 	free(result);
 	return (0);
-	}
 }
-
-
