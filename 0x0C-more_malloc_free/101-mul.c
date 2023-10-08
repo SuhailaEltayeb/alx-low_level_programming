@@ -49,12 +49,12 @@ void errors(void)
 	exit(98);
 }
 /**
- * main - multiply 2 positive numbers
+ * multi - multiply 2 positive numbers
  * @argc: argument count
  * @argv: arrgument vector
  * Return: 0
 */
-int main(int argc, char *argv[])
+int multi(int argc, char *argv[])
 {
 	char *s1, *s2;
 	int length1, length2, length, i, carry, digit1, digit2, *result, a = 0;
