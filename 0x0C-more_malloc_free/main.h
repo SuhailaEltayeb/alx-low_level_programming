@@ -8,7 +8,7 @@ int *array_range(int min, int max);
 int _putchar(char c);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void errors();
-int main(int argc, char *argv[]);
+int multi(int argc, char *argv[]);
 int _strlen(char *s);
 int is_digit(char *s);
 
