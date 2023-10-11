@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "function_pointers.h"
 
 /**
  * main - function to print opcodes
@@ -7,7 +8,7 @@
  * @argv: args vector
  * Return: always 0
 */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	char *p = (char *)main;
 	int s;
