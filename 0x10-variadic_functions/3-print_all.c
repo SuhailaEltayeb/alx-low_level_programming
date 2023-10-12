@@ -9,13 +9,11 @@
 
 void print_all(const char * const format, ...)
 {
-	int i, ch_status;
-
+	int i, ch_status; /* declaration of variables and their datatypes */
 	char *str;
 	va_list s;
 
-	va_start(s, format);
-
+	va_start(s, format); /* var argumants initialization */
 	i = 0;
 	while (format != NULL && format[i] != '\0')
 	{
@@ -23,7 +21,7 @@ void print_all(const char * const format, ...)
 		{
 			case 'i':
 				printf("%d", va_arg(s, int));
-				ch_status = 0;
+				ch_status = 0; /* check condition */
 				break;
 			case 'f':
 				printf("%f", va_arg(s, double));
@@ -38,6 +36,7 @@ void print_all(const char * const format, ...)
 				if (str == NULL)
 					str = "(nil)";
 				printf("%s", str);
+				ch_status = 0;
 				break;
 			default:
 				ch_status = 1;
