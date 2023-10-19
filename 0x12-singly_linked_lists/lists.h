@@ -6,10 +6,12 @@
 #include <stdio.h>
 
 /**
- * struct lists_s - a struct for single linked lists
+ * struct list_s - a struct for single linked lists
  * @len: length of input string
  * @str: input string
  * @next: a ponter to next node in linked list
+ *
+ * Discription: struct lists_s
  */
 
 typedef struct list_s
