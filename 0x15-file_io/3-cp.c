@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	F_F = open(argv[1], O_RDONLY);
-	F_T = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND | 0664);
+	F_T = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	Check_File(F_F, F_T, argv);
 
 	Num_Ch = 1024;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		Num_Ch = read(F_F, buffer, 1024);
 		if (Num_Ch == -1)
 			Check_File(-1, 0, argv);
-		NUM_wr = write(F_T, buffer, 1024);
+		NUM_wr = write(F_T, buffer, Num_Ch);
 		if (NUM_wr == -1)
 			Check_File(0, -1, argv);
 	}
