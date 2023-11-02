@@ -24,21 +24,20 @@ void close_elf(int elf);
  */
 void check_elf(unsigned char *e_ident)
 {
-	int idx;
+	int index;
 
-	for (idx = 0; idx < 4; idx++)
+	for (index = 0; index < 4; index++)
 	{
-		if (e_ident[idx] != 127 &&
-		e_ident[idx] != 'E' &&
-		e_ident[idx] != 'L' &&
-		e_ident[idx] != 'F')
+		if (e_ident[index] != 127 &&
+			e_ident[index] != 'E' &&
+			e_ident[index] != 'L' &&
+			e_ident[index] != 'F')
 		{
-			dprintf(STDERR_FILENO, "ERROR: File is Not an ELF File\n");
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
 		}
 	}
 }
-
 /**
  * print_magic - function to print magic nums
  * @e_ident: pointer to magic numbers in elf file
@@ -46,13 +45,15 @@ void check_elf(unsigned char *e_ident)
  */
 void print_magic(unsigned char *e_ident)
 {
-	int idx;
+	int index;
 
-	for (idx = 0; idx < EI_NIDENT; idx++)
+	printf("  Magic:   ");
+
+	for (index = 0; index < EI_NIDENT; index++)
 	{
-		printf("%02x", e_ident[idx]);
+		printf("%02x", e_ident[index]);
 
-		if (idx == EI_NIDENT - 1)
+		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -89,7 +90,7 @@ void print_class(unsigned char *e_ident)
  */
 void print_data(unsigned char *e_ident)
 {
-	printf(" Data:                            ");
+	printf("  Data:                              ");
 
 	switch (e_ident[EI_DATA])
 	{
@@ -103,8 +104,8 @@ void print_data(unsigned char *e_ident)
 			printf("2's complement, big endian\n");
 			break;
 		default:
-		printf("unknown: %x>\n", e_ident[EI_CLASS]);
-		}
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
 }
 /**
  * print_version - function to print elf header version
@@ -114,16 +115,17 @@ void print_data(unsigned char *e_ident)
 
 void print_version(unsigned char *e_ident)
 {
-	printf(" Version                             %d",
+	printf("  Version:                           %d",
 			e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
-	case EV_CURRENT:
-		printf(" (current)\n");
-		break;
-	default:
-		printf("\n");
+		case EV_CURRENT:
+			printf(" (current)\n");
+			break;
+		default:
+			printf("\n");
+			break;
 	}
 }
 /**
@@ -133,7 +135,7 @@ void print_version(unsigned char *e_ident)
  */
 void print_osabi(unsigned char *e_ident)
 {
-	printf(" OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 
 	switch (e_ident[EI_OSABI])
 	{
@@ -178,7 +180,7 @@ void print_osabi(unsigned char *e_ident)
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf(" ABI Version:                            %d\n",
+	printf("  ABI Version:                       %d\n",
 			e_ident[EI_ABIVERSION]);
 }
 /**
@@ -191,8 +193,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
-
-	printf(" Type:                            ");
+	printf("  Type:                              ");
 
 	switch (e_type)
 	{
@@ -203,7 +204,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 			printf("REL (Relocatable file)\n");
 			break;
 		case ET_EXEC:
-			printf("EXEC (Execuatable file)\n");
+			printf("EXEC (Executable file)\n");
 			break;
 		case ET_DYN:
 			printf("DYN (Shared object file)\n");
@@ -223,7 +224,8 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	printf(" Entry point address:               ");
+	printf("  Entry point address:               ");
+
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
 		e_entry = ((e_entry << 8) & 0xFF00FF00) |
@@ -261,7 +263,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	int o, r;
 
 	o = open(argv[1], O_RDONLY);
-
 	if (o == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
