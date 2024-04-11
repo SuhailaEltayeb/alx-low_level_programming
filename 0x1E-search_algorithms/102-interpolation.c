@@ -35,7 +35,7 @@ int interpolation_search(int *array, size_t size, int value)
 	if (left >= size || array[left] > value)
 		printf(" is out of range\n");
 	else
-		printf(" = [%d]\n", array[probe_position]);
+		printf(" = [%d]\n", array[left]);
 
 	return (-1);
 }
